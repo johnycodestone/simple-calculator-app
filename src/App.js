@@ -4,22 +4,23 @@ import OperationText from "./Components/OperationText";
 import OperationBtn from "./Components/OperationBtn";
 
 function App() {
-  const [num1, setNum1] = useState(0);
-  const [num2, setNum2] = useState(0);
+  const [num1, setNum1] = useState("");
+  const [num2, setNum2] = useState("");
   const [result, setResult] = useState(null);
-  const [operatorSymbol, setOperatorSymbol] = useState("+");
+  const [operatorSymbol, setOperatorSymbol] = useState(null);
+  const operators = ["+", "–", "*", "/"];
 
   const performOperation = (operator) => {
     let res;
     setOperatorSymbol(operator);
 
-    if (operator === "+") res = num1 + num2;
+    if (operator === "+") res = Number(num1) + Number(num2);
     else if (operator === "–") res = num1 - num2;
     else if (operator === "*") res = num1 * num2;
     else if (operator === "/")
       res = num2 !== 0 ? num1 / num2 : "Can not be divided by 0";
 
-    setResult(res);
+    setResult(Number(res.toFixed(5)));
   };
 
   return (
@@ -35,7 +36,7 @@ function App() {
             type="number"
             value={num1}
             placeholder="Enter first number"
-            onChange={(e) => setNum1(Number(e.target.value))}
+            onChange={(e) => setNum1(e.target.value)}
           />
 
           <p className="operator-symbol">{operatorSymbol}</p>
@@ -45,17 +46,15 @@ function App() {
             type="number"
             value={num2}
             placeholder="Enter second number"
-            onChange={(e) => setNum2(Number(e.target.value))}
+            onChange={(e) => setNum2(e.target.value)}
           />
         </div>
 
         <OperationText resultText={result} />
-
         <div className="buttons">
-          <OperationBtn operator="+" handleClick={performOperation} />
-          <OperationBtn operator="–" handleClick={performOperation} />
-          <OperationBtn operator="*" handleClick={performOperation} />
-          <OperationBtn operator="/" handleClick={performOperation} />
+          {operators.map((e) => (
+            <OperationBtn operator={e} handleClick={performOperation} />
+          ))}
         </div>
       </div>
     </div>
