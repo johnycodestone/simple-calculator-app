@@ -1,0 +1,15 @@
+.operator-btn {
+    background-color: lavenderblush;
+    border: none;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 0 0 2px rgb(0,0,0,0.3);
+    transition: color 0.3s ease;
+}
+
+.operator-btn:hover {
+    background-color: lightgray;
+}

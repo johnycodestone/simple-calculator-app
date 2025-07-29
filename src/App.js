@@ -14,7 +14,7 @@ function App() {
     setOperatorSymbol(operator);
 
     if (operator === "+") res = num1 + num2;
-    else if (operator === "-") res = num1 - num2;
+    else if (operator === "–") res = num1 - num2;
     else if (operator === "*") res = num1 * num2;
     else if (operator === "/")
       res = num2 !== 0 ? num1 / num2 : "Can not be divided by 0";
@@ -31,6 +31,7 @@ function App() {
       <div id="calculator">
         <div id="input-fields">
           <input
+            className="field"
             type="number"
             value={num1}
             placeholder="Enter first number"
@@ -40,6 +41,7 @@ function App() {
           <p className="operator-symbol">{operatorSymbol}</p>
 
           <input
+            className="field"
             type="number"
             value={num2}
             placeholder="Enter second number"
@@ -51,7 +53,7 @@ function App() {
 
         <div className="buttons">
           <OperationBtn operator="+" handleClick={performOperation} />
-          <OperationBtn operator="-" handleClick={performOperation} />
+          <OperationBtn operator="–" handleClick={performOperation} />
           <OperationBtn operator="*" handleClick={performOperation} />
           <OperationBtn operator="/" handleClick={performOperation} />
         </div>
