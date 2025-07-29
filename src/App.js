@@ -14,13 +14,23 @@ function App() {
     let res;
     setOperatorSymbol(operator);
 
-    if (operator === "+") res = Number(num1) + Number(num2);
-    else if (operator === "–") res = num1 - num2;
-    else if (operator === "*") res = num1 * num2;
-    else if (operator === "/")
-      res = num2 !== 0 ? num1 / num2 : "Can not be divided by 0";
+    if (num1 === "" || num2 === "") {
+      res = "Please enter both numbers!";
+      setResult(res);
+      return;
+    }
 
-    setResult(Number(res.toFixed(5)));
+    const n1 = Number(num1);
+    const n2 = Number(num2);
+
+    if (operator === "+") res = n1 + n2;
+    else if (operator === "–") res = n1 - n2;
+    else if (operator === "*") res = n1 * n2;
+    else if (operator === "/") {
+      res = n2 !== 0 ? n1 / n2 : "Can not be divided by 0";
+    }
+
+    typeof res === "number" ? setResult(Number(res.toFixed(5))) : setResult(res)
   };
 
   return (
